@@ -1,4 +1,10 @@
-let productList=["Iphone 11", "Iphone X", "Iphone 8", "Iphone XS", "Iphone 8 plus"];
+//biến toàn cục
+// let productList=["Iphone 11", "Iphone X", "Iphone 8", "Iphone XS", "Iphone 8 plus"];
+let productList=[
+    new Product("Note 10", 12000, "Mo ta 1"),
+    new Product("Note 8", 9000, "Mo ta 2"),
+    new Product("Note 9", 11000, "Mo ta 3"),
+];
 //ten ham: showAllProduct
 //ds tham so: khong co:
 //dl tra ve: khong co
@@ -11,7 +17,9 @@ function showAllProduct(){
         // demo+= 'so tiep theo la '+ i;
         // demo+= 'So tiep theo la '+ i + 'don vi';
         content += '<tr>\n' +
-            '            <td>'+productList[i]+'</td>\n' +
+            '            <td>'+productList[i].getName()+'</td>\n' +
+            '            <td>'+productList[i].getPrice()+'</td>\n' +
+            '            <td>'+productList[i].getDescription()+'</td>\n' +
             '            <td><button onclick="editProduct('+i+')">sua</button></td>\n' +
             '            <td><button onclick="deleteProduct('+i+')">xoa</button></td>\n' +
             '        </tr>'
@@ -29,7 +37,13 @@ showAllProduct();
 // hiển thị lại dữ liệu
 function createNewProduct() {
     // let newP = prompt("Moi ban nhap ten sp moi");
-    let newP = document.getElementById("newP").value;
+    //lay du lieu
+    let newName = document.getElementById("newName").value;
+    let newPrice = document.getElementById("newPrice").value;
+    let newDescription = document.getElementById("newDescription").value;
+    // tao moi doi tuong
+    let newP = new Product(newName, newPrice, newDescription);
+    // push vao mang
     productList.push(newP);
     showAllProduct();
     document.getElementById("newP").value = "";
@@ -52,8 +66,14 @@ function deleteProduct(index){
 //3. hien thi lai danh sach
 
 function editProduct(index){
+    //biến cục bộ
     let newValue = prompt("Moi ban nhap vao ten moi", productList[index]);
     productList[index] = newValue;
     showAllProduct();
+
 }
+
+let $a = [3, 4, 6];
+
+
 
